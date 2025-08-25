@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMC3 - Дизайн Превью</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Конфигурация Tailwind для EMC3 */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    /* Фирменные шрифты EMC3 */
+    @font-face {
+      font-family: 'Helios Black';
+      src: url('data:font/woff2;base64,') format('woff2');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'Helios Cond Black';
+      src: url('data:font/woff2;base64,') format('woff2');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    :root {
+      --primary-50: #eff6ff;
+      --primary-100: #dbeafe;
+      --primary-200: #bfdbfe;
+      --primary-300: #93c5fd;
+      --primary-400: #60a5fa;
+      --primary-500: #3b82f6;
+      --primary-600: #1E3A8A;
+      --primary-700: #1d4ed8;
+      --primary-800: #1e40af;
+      --primary-900: #1e3a8a;
+      
+      --secondary-50: #fff7ed;
+      --secondary-100: #ffedd5;
+      --secondary-200: #fed7aa;
+      --secondary-300: #fdba74;
+      --secondary-400: #fb923c;
+      --secondary-500: #F97316;
+      --secondary-600: #ea580c;
+      --secondary-700: #c2410c;
+      --secondary-800: #9a3412;
+      --secondary-900: #7c2d12;
+    }
+    
+    /* Настройка фирменных шрифтов EMC3 */
+    html, body {
+      font-family: 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Заголовки используют фирменный шрифт Helios */
+    h1, h2, h3, h4, h5, h6, .heading-font {
+      font-family: 'Helios Black', 'Arial Black', 'Arial', sans-serif;
+      font-weight: 900;
+    }
+    
+    /* Для деловой документации - Arial */
+    .document-font {
+      font-family: 'Arial', sans-serif;
+    }
+    
+    /* Логотип использует фирменный шрифт */
+    .logo-font {
+      font-family: 'Helios Cond Black', 'Arial Black', 'Arial', sans-serif;
+      font-weight: 900;
+    }
+    
+    /* Кастомные классы из globals.css */
+    .btn {
+      @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-600);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-700);
+    }
+    
+    .btn-secondary {
+      background-color: var(--secondary-500);
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background-color: var(--secondary-600);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary-600);
+      color: var(--primary-600);
+      background: transparent;
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary-600);
+      color: white;
+    }
+    
+    .card {
+      @apply bg-white rounded-xl shadow-sm border border-neutral-200 overflow-hidden;
+    }
+    
+    .card-header {
+      @apply px-6 py-4 border-b border-neutral-200;
+    }
+    
+    .card-body {
+      @apply px-6 py-4;
+    }
+    
+    .badge-primary {
+      background-color: var(--primary-100);
+      color: var(--primary-800);
+    }
+    
+    .badge-secondary {
+      background-color: var(--secondary-100);
+      color: var(--secondary-800);
+    }
+    
+    .gradient-primary {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+    }
+    
+    .gradient-secondary {
+      background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
+    }
+  </style>
+  <script>
+    // Конфигурация Tailwind для кастомных цветов
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe', 
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#1E3A8A',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            secondary: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              200: '#fed7aa', 
+              300: '#fdba74',
+              400: '#fb923c',
+              500: '#F97316',
+              600: '#ea580c',
+              700: '#c2410c',
+              800: '#9a3412',
+              900: '#7c2d12',
+            }
+          },
+          fontFamily: {
+            sans: ['Segoe UI Variable', 'Segoe UI', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-neutral-50 text-neutral-900">
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <img src="../EMC 3 Final/Logo/RGB/EMC3.png" alt="EMC3 Logo" class="h-10 w-auto">
+          </div>
+          <nav class="ml-10 flex space-x-8">
+            <a href="#" class="text-neutral-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">Каталог</a>
+            <a href="#" class="text-neutral-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">О компании</a>
+            <a href="#" class="text-neutral-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium">Контакты</a>
+          </nav>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button class="btn btn-outline">Войти</button>
+          <button class="btn btn-primary">Корзина</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="gradient-primary text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl lg:text-5xl font-bold mb-6 heading-font">
+          Профессиональные энергоэффективные решения для бизнеса
+        </h1>
+        <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+          Высококачественные светильники для офисов, производства и ритейла. 
+          Гарантия 3-5 лет, техническая поддержка, быстрая доставка.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="btn btn-secondary px-8 py-3 text-lg">Каталог продукции</button>
+          <button class="btn btn-outline bg-white text-primary-600 border-white hover:bg-neutral-100 px-8 py-3 text-lg">
+            Получить консультацию
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Typography Examples -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-semibold text-neutral-900 mb-8 heading-font">Примеры типографики</h2>
+        <div class="space-y-8">
+          <div>
+            <h1 class="text-3xl lg:text-4xl font-semibold text-neutral-900 heading-font">H1 - Заголовок первого уровня (Helios Black)</h1>
+            <p class="text-sm text-neutral-500">Шрифт: Helios Black, Размер: 30px/36px, Вес: 900, Цвет: #0f172a</p>
+          </div>
+          <div>
+            <h2 class="text-2xl lg:text-3xl font-semibold text-neutral-900 heading-font">H2 - Заголовок второго уровня (Helios Black)</h2>
+            <p class="text-sm text-neutral-500">Шрифт: Helios Black, Размер: 24px/30px, Вес: 900, Цвет: #0f172a</p>
+          </div>
+          <div>
+            <h3 class="text-xl lg:text-2xl font-semibold text-neutral-900 heading-font">H3 - Заголовок третьего уровня (Helios Black)</h3>
+            <p class="text-sm text-neutral-500">Шрифт: Helios Black, Размер: 20px/24px, Вес: 900, Цвет: #0f172a</p>
+          </div>
+          <div>
+            <p class="text-base text-neutral-900">
+              <strong>Основной текст (Segoe UI):</strong> Размер: 16px, Цвет: #0f172a (text-neutral-900).
+              Используется для основного контента сайта, описаний товаров и навигации.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </div>
+          <div>
+            <p class="text-base text-neutral-900 document-font">
+              <strong>Деловой текст (Arial):</strong> Используется для деловой документации, электронных писем и официальных документов.
+              Обеспечивает максимальную читаемость в корпоративной среде.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Font Usage Guide -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-semibold text-neutral-900 mb-8 heading-font">Руководство по использованию шрифтов</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="text-lg font-semibold text-neutral-900 mb-3 heading-font">Helios Black</h3>
+              <ul class="text-sm text-neutral-600 space-y-1">
+                <li>• Заголовки всех уровней</li>
+                <li>• Логотип компании</li>
+                <li>• Рекламные материалы</li>
+                <li>• Акценты и призывы к действию</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h3 class="text-lg font-semibold text-neutral-900 mb-3">Segoe UI</h3>
+              <ul class="text-sm text-neutral-600 space-y-1">
+                <li>• Основной текст сайта</li>
+                <li>• Описания товаров</li>
+                <li>• Навигация и меню</li>
+                <li>• Интерфейсные элементы</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h3 class="text-lg font-semibold text-neutral-900 mb-3 document-font">Arial</h3>
+              <ul class="text-sm text-neutral-600 space-y-1 document-font">
+                <li>• Деловая документация</li>
+                <li>• Электронные письма</li>
+                <li>• Коммерческие предложения</li>
+                <li>• Официальные документы</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Color Palette -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-semibold text-neutral-900 mb-8 heading-font">Цветовая палитра</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Основные цвета</h3>
+            <div class="space-y-3">
+              <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 rounded-lg" style="background-color: var(--primary-600);"></div>
+                <div>
+                  <p class="font-medium">Синий EMC3</p>
+                  <p class="text-sm text-neutral-500">#1E3A8A (primary-600)</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 rounded-lg" style="background-color: var(--secondary-500);"></div>
+                <div>
+                  <p class="font-medium">Оранжевый EMC3</p>
+                  <p class="text-sm text-neutral-500">#F97316 (secondary-500)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Нейтральные цвета</h3>
+            <div class="space-y-3">
+              <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 rounded-lg bg-neutral-900"></div>
+                <div>
+                  <p class="font-medium">Текст основной</p>
+                  <p class="text-sm text-neutral-500">#0f172a (neutral-900)</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 rounded-lg bg-neutral-50 border border-neutral-200"></div>
+                <div>
+                  <p class="font-medium">Фон страницы</p>
+                  <p class="text-sm text-neutral-500">#f8fafc (neutral-50)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-semibold text-neutral-900 mb-8 heading-font">Кнопки</h2>
+        <div class="flex flex-wrap gap-4">
+          <button class="btn btn-primary">Основная кнопка</button>
+          <button class="btn btn-secondary">Вторичная кнопка</button>
+          <button class="btn btn-outline">Контурная кнопка</button>
+          <button class="btn bg-neutral-700 text-white hover:bg-neutral-800">Нейтральная кнопка</button>
+        </div>
+      </section>
+
+      <!-- Product Cards -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-semibold text-neutral-900 mb-8 heading-font">Карточки товаров</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Product Card 1 -->
+          <div class="card">
+            <div class="aspect-square bg-neutral-100 flex items-center justify-center">
+              <div class="text-6xl text-neutral-400">💡</div>
+            </div>
+            <div class="card-body">
+              <h3 class="text-lg font-semibold text-neutral-900 mb-2 heading-font">Светильник офисный LED-OF-40</h3>
+              <p class="text-sm text-neutral-500 mb-3">Артикул: LED-OF-40-4000</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge-primary px-2 py-1 rounded-full text-xs font-medium">40Вт</span>
+                <span class="badge-primary px-2 py-1 rounded-full text-xs font-medium">4000К</span>
+                <span class="badge-primary px-2 py-1 rounded-full text-xs font-medium">3600лм</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-lg font-semibold text-neutral-900">2 850 ₽</p>
+                  <p class="text-sm text-neutral-500">от 10 шт</p>
+                </div>
+                <button class="btn btn-primary">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="card">
+            <div class="aspect-square bg-neutral-100 flex items-center justify-center">
+              <div class="text-6xl text-neutral-400">🔆</div>
+            </div>
+            <div class="card-body">
+              <h3 class="text-lg font-semibold text-neutral-900 mb-2 heading-font">Прожектор промышленный LED-PR-100</h3>
+              <p class="text-sm text-neutral-500 mb-3">Артикул: LED-PR-100-5000</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge-secondary px-2 py-1 rounded-full text-xs font-medium">100Вт</span>
+                <span class="badge-secondary px-2 py-1 rounded-full text-xs font-medium">5000К</span>
+                <span class="badge-secondary px-2 py-1 rounded-full text-xs font-medium">IP65</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-lg font-semibold text-neutral-900">4 200 ₽</p>
+                  <p class="text-sm text-neutral-500">от 5 шт</p>
+                </div>
+                <button class="btn btn-primary">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="card">
+            <div class="aspect-square bg-neutral-100 flex items-center justify-center">
+              <div class="text-6xl text-neutral-400">✨</div>
+            </div>
+            <div class="card-body">
+              <h3 class="text-lg font-semibold text-neutral-900 mb-2 heading-font">Светильник встраиваемый LED-IN-20</h3>
+              <p class="text-sm text-neutral-500 mb-3">Артикул: LED-IN-20-3000</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge-primary px-2 py-1 rounded-full text-xs font-medium">20Вт</span>
+                <span class="badge-primary px-2 py-1 rounded-full text-xs font-medium">3000К</span>
+                <span class="badge-primary px-2 py-1 rounded-full text-xs font-medium">1800лм</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-lg font-semibold text-neutral-900">1 650 ₽</p>
+                  <p class="text-sm text-neutral-500">от 20 шт</p>
+                </div>
+                <button class="btn btn-primary">В корзину</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Information Cards -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-semibold text-neutral-900 mb-8 heading-font">Информационные блоки</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="card text-center">
+            <div class="card-body">
+              <div class="text-4xl mb-4" style="color: var(--primary-600);">⚡</div>
+              <h3 class="text-lg font-semibold text-neutral-900 mb-2 heading-font">Энергоэффективность</h3>
+              <p class="text-sm text-neutral-600">Экономия электроэнергии до 80% по сравнению с традиционными светильниками</p>
+            </div>
+          </div>
+
+          <div class="card text-center">
+            <div class="card-body">
+              <div class="text-4xl mb-4" style="color: var(--secondary-500);">🛡️</div>
+              <h3 class="text-lg font-semibold text-neutral-900 mb-2 heading-font">Надежность</h3>
+              <p class="text-sm text-neutral-600">Гарантия 3-5 лет на всю продукцию с полным техническим сопровождением</p>
+            </div>
+          </div>
+
+          <div class="card text-center">
+            <div class="card-body">
+              <div class="text-4xl mb-4" style="color: var(--primary-600);">🔧</div>
+              <h3 class="text-lg font-semibold text-neutral-900 mb-2 heading-font">Техподдержка</h3>
+              <p class="text-sm text-neutral-600">Профессиональные консультации по подбору и установке оборудования</p>
+            </div>
+          </div>
+
+          <div class="card text-center">
+            <div class="card-body">
+              <div class="text-4xl mb-4" style="color: var(--secondary-500);">🚚</div>
+              <h3 class="text-lg font-semibold text-neutral-900 mb-2 heading-font">Быстрая доставка</h3>
+              <p class="text-sm text-neutral-600">Доставка по России, собственный склад, отгрузка в день заказа</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-neutral-800 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-2xl font-bold mb-4 logo-font" style="color: var(--primary-400);">EMC3</h3>
+          <p class="text-neutral-300">Профессиональные LED решения для бизнеса</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 heading-font">Продукция</h4>
+          <ul class="space-y-2 text-neutral-300">
+            <li><a href="#" class="hover:text-white">Офисные светильники</a></li>
+            <li><a href="#" class="hover:text-white">Промышленные прожекторы</a></li>
+            <li><a href="#" class="hover:text-white">Встраиваемые светильники</a></li>
+            <li><a href="#" class="hover:text-white">Уличное освещение</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 heading-font">Информация</h4>
+          <ul class="space-y-2 text-neutral-300">
+            <li><a href="#" class="hover:text-white">О компании</a></li>
+            <li><a href="#" class="hover:text-white">Сертификаты</a></li>
+            <li><a href="#" class="hover:text-white">Гарантии</a></li>
+            <li><a href="#" class="hover:text-white">Доставка и оплата</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 heading-font">Контакты</h4>
+          <div class="space-y-2 text-neutral-300">
+            <p>+7 (495) 123-45-67</p>
+            <p>info@emc3.ru</p>
+            <p>Москва, ул. Примерная, д. 1</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-neutral-700 mt-8 pt-8 text-center text-neutral-400">
+        <p>&copy; 2024 EMC3. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

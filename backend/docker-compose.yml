@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: emc3_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: emc3_lighting
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    networks:
+      - emc3_network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: emc3_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@emc3.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - emc3_network
+
+volumes:
+  postgres_data:
+
+networks:
+  emc3_network:
+    driver: bridge

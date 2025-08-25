@@ -1,0 +1,38 @@
+# Dockerfile для production развертывания EMC3 Backend
+FROM python:3.11-slim
+
+# Установка системных зависимостей
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    libpq-dev \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Создание рабочей директории
+WORKDIR /app
+
+# Копирование файла зависимостей
+COPY requirements.txt .
+
+# Установка Python зависимостей
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Копирование кода приложения
+COPY . .
+
+# Создание пользователя для безопасности
+RUN useradd -m -u 1000 emc3user && \
+    chown -R emc3user:emc3user /app && \
+    mkdir -p /app/uploads /app/logs && \
+    chown -R emc3user:emc3user /app/uploads /app/logs
+
+# Переключение на пользователя
+USER emc3user
+
+# Открытие порта
+EXPOSE 8000
+
+# Команда запуска с оптимизацией для production
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4", "--access-log", "--log-level", "info"]
